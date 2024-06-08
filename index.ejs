@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Trivia Game</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Trivia Game - Level <%= level %> (Difficulty: <%= difficulty %>)</h1>
+    <h2>Score: <%= score %></h2>
+    <p><%= question.question %></p>
+    <form action="/answer" method="post">
+      <% question.choices.forEach(choice => { %>
+        <input type="radio" name="answer" value="<%= choice %>"> <%= choice %><br>
+      <% }); %>
+      <button type="submit">Submit Answer</button>
+    </form>
+    <% if (notification) { %>
+      <script>
+        alert('Difficulty has changed to <%= difficulty %>!');
+      </script>
+    <% } %>
+  </div>
+</body>
+</html>
